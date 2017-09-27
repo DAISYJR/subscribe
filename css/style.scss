@@ -1,0 +1,155 @@
+@charset "utf-8";
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-size: .32rem;
+  font-style: normal;
+  font-weight: normal;
+}
+
+ul, li {
+  list-style: none;
+}
+
+html {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+img, div, body, html, ul, li, a {
+  -webkit-touch-callout: none;
+}
+
+input, button {
+  outline: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #ccc;
+}
+$num: 100%;
+@mixin nums($w:100%,$h:auto) {
+  width: $w;
+  height: $h;
+}
+
+@mixin flex($j:center) {
+  display: flex;
+  justify-content: $j;
+  align-items: center;
+}
+
+@mixin pos($p:relative) {
+  position: $p;
+}
+
+$bg: background;
+%text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+%full {
+  width: $num;
+  height: $num;
+}
+
+html, body, .wrap {
+  @extend %full;
+}
+
+.wrap{
+  overflow:hidden;
+  display:-webkit-flex;
+  -webkit-flex-direction:column;
+}
+
+.header{
+  @include nums($h:1.2rem);
+  #{$bg}:#003300;
+  @include flex(space-between);
+  padding: 0 .2rem;
+    a{
+      color:#fff;
+        i.icon{
+          font-size:.42rem;
+        }
+      span{
+        font-size:.36rem;
+        padding-left:.3rem;
+        border-left:1px solid #000;
+        margin-left:.2rem;
+      }
+    }
+}
+
+.main{
+  -webkit-flex:1;
+  #{$bg}:#818D9B;
+  @include flex;
+    .box{
+      @include nums($w:96%, $h:80%);
+      #{$bg}:#fff;
+      border-radius:15px;
+        .test{
+          @include nums($h:3.5rem);
+          padding: .7rem 25%;
+            .img{
+              @include nums;
+                img{
+                  @include nums;
+                }
+            }
+            p{
+              font-size:.42rem;
+              color:#666;
+              padding-top:.1rem;
+              text-align:Center;
+            }
+        }
+    }
+    .form{
+      @include nums;
+      padding: 0 .3rem;
+        li{
+          @include pos;
+          @include nums($h:1.2rem);
+          border-bottom:2px solid #838987;
+          margin-top:.15rem;
+            span{
+              @include pos(absolute);
+              left:.2rem;
+              top:.35rem;
+              @include nums($w:.35rem,$h:100%);
+                img{
+                  @include nums;
+                }
+            }
+            input{
+              padding-left:.8rem;
+              @include nums($h:100%);
+              border:none;
+              font-size:.36rem;
+              color:#999;
+            }
+        }
+    }
+    button{
+      #{$bg}:#2FBA77;
+      @include nums($w:94%,$h:1rem);
+      margin-left:3%;
+      border:none;
+      border-radius:5px;
+      color:#fff;
+      font-size:.38rem;
+      margin-top:1rem;
+    }
+}
